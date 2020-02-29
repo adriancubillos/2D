@@ -1,29 +1,31 @@
 import { Injectable } from '@angular/core';
 import Konva from 'konva';
+import { ILine } from './interfaces/i-line';
+import { ShapeConfig } from 'konva/types/Shape';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ShapeService {
-  constructor() { }
-  circle() {
+  constructor() {}
+  circle(props: ShapeConfig) {
     return new Konva.Circle({
-      x: 100,
-      y: 100,
-      radius: 70,
-      fill: 'red',
-      stroke: 'black',
-      strokeWidth: 4,
-      draggable: true
+      draggable: props.draggable,
+      fill: props.fill,
+      radius: props.radius,
+      stroke: props.stroke,
+      strokeWidth: props.strokeWidth,
+      x: props.x,
+      y: props.y,
+      den: props.den,
     });
   }
-  line(pos, mode: string = 'brush') {
+  line(props: ILine) {
     return new Konva.Line({
-      stroke: '#df4b26',
-      strokeWidth: 5,
-      globalCompositeOperation:
-        mode === 'brush' ? 'source-over' : 'destination-out',
-      points: [pos.x, pos.y],
-      draggable: mode == 'brush'
+      stroke: props.stroke,
+      strokeWidth: props.strokeWidth,
+      globalCompositeOperation: props.globalCompositeOperation,
+      points: props.points,
+      draggable: props.draggable,
     });
   }
   rectangle() {
@@ -35,7 +37,7 @@ export class ShapeService {
       fill: 'green',
       stroke: 'black',
       strokeWidth: 4,
-      draggable: true
+      draggable: true,
     });
   }
 }
