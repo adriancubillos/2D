@@ -5,7 +5,7 @@ import { TextNodeService } from '../text-node.service';
 @Component({
   selector: 'app-whiteboard-page',
   templateUrl: './whiteboard-page.component.html',
-  styleUrls: ['./whiteboard-page.component.scss'],
+  styleUrls: ['./whiteboard-page.component.css'],
 })
 export class WhiteboardPageComponent implements OnInit {
   shapes: any = [];
